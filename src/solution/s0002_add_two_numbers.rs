@@ -12,7 +12,7 @@
 */
 
 use crate::solution::Solution;
-use crate::data_structures::list_node::ListNode;
+use crate::structures::linked_list::ListNode;
 
 impl Solution {
     pub fn add_two_numbers(l1: Option<Box<ListNode>>, l2: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
@@ -57,4 +57,20 @@ impl Solution {
             tail = &mut tail.as_mut().unwrap().next
         }
     }
+}
+
+#[test]
+fn add_two_numbers_test() {
+    assert_eq!(
+        Solution::add_two_numbers(ListNode::vec_to_linked_list(vec![2, 4, 3]), ListNode::vec_to_linked_list(vec![5, 6, 4])),
+        ListNode::vec_to_linked_list(vec![7, 0, 8])
+    );
+    assert_eq!(
+        Solution::add_two_numbers(ListNode::vec_to_linked_list(vec![1, 2, 3]), ListNode::vec_to_linked_list(vec![8, 9, 1])),
+        ListNode::vec_to_linked_list(vec![9, 1, 5])
+    );
+    assert_eq!(
+        Solution::add_two_numbers(ListNode::vec_to_linked_list(vec![6, 4, 8]), ListNode::vec_to_linked_list(vec![5, 6, 9])),
+        ListNode::vec_to_linked_list(vec![1, 1, 8, 1])
+    );
 }
